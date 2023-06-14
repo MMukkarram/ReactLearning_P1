@@ -1,7 +1,9 @@
 import Expenses from "./components/Expenses/Expenses";
 
+import NewExpense from "./components/NewExpense/NewExpense";
+
 const App = () => {
-  const expenses = [
+  let expenses = [
     {
       id: "e1",
       title: "Toilet Paper",
@@ -23,11 +25,17 @@ const App = () => {
     },
   ];
 
+  const saveNewExpenseHandler = (newExpenseData) => {
+    console.log(newExpenseData);
+  };
+
   return (
     <div>
+      {/* onSaveNewExpense={saveNewExpenseHandler} is used to get data from child to parent ie from NewExpense.js to App.js */}
+      <NewExpense onSaveNewExpense={saveNewExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
